@@ -1,17 +1,12 @@
 #!/usr/bin/env ruby
 
-require "ostruct"
+require 'ostruct'
 
 class Parser
-  def initialize(raw_logs)
-    @raw_logs = raw_logs
-  end
+  attr_reader :logs
 
-  def logs
-    @logs ||= @raw_logs.split("\n").map do |line|
-      path, ip = line.split(/\s+/)
-      OpenStruct.new(path: path, ip: ip)
-    end
+  def initialize(logs)
+    @logs = logs
   end
 
   def views_stats
@@ -45,7 +40,9 @@ end
 
 # Run only if it was called from command line
 if __FILE__== $0
-  logs = File.read(ARGV[0])
+  logs = Logs.new
+  open(ARGV[0]).each_line { |line| logs.append(line) }
+
   parser = Parser.new(logs)
   puts "List of webpages with most views"
   parser.views_stats.each do |stats|
