@@ -1,7 +1,7 @@
-require_relative "../parser"
+require_relative "../logs_analyzer"
 require_relative "../logs"
 
-RSpec.describe Parser do
+RSpec.describe LogsAnalyzer do
   subject { described_class.new(logs) }
 
   context "empty logs" do
