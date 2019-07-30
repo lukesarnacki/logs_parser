@@ -1,12 +1,13 @@
 require_relative "../parser"
+require_relative "../logs"
 
 RSpec.describe Parser do
   subject { described_class.new(logs) }
 
   context "empty logs" do
     let(:logs) { Logs.new }
-    specify { expect(subject.views_stats).to be_empty }
-    specify { expect(subject.unique_views_stats).to be_empty }
+    specify { expect(subject.webpages_by_views).to be_empty }
+    specify { expect(subject.webpages_by_unique_views).to be_empty }
   end
 
   context "non empty logs" do
@@ -24,7 +25,7 @@ RSpec.describe Parser do
     end
 
     it "sorts by pages views" do
-      expect(subject.views_stats).to match_array([
+      expect(subject.webpages_by_views.map {|w| [w.path, w.views]}).to match_array([
         ["/about", 4],
         ["/index", 3],
         ["/home", 1]
@@ -32,7 +33,7 @@ RSpec.describe Parser do
     end
 
     it "sorts webpages unique views" do
-      expect(subject.unique_views_stats).to match_array([
+      expect(subject.webpages_by_unique_views.map{|w| [w.path, w.unique_views]}).to match_array([
         ["/about", 3],
         ["/index", 2],
         ["/home", 1]

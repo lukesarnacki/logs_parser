@@ -24,12 +24,8 @@ RSpec.describe Logs do
         logs.append('/path1 1.1.1.1')
         logs.append('/path2 2.2.2.2')
 
-        expect(logs.to_a).to match_array(
-          [
-            Log.new(path: '/path1', ip: '1.1.1.1'),
-            Log.new(path: '/path2', ip: '2.2.2.2')
-          ]
-        )
+        expect(logs.to_a[0]).to have_attributes(path: '/path1', ip: '1.1.1.1')
+        expect(logs.to_a[1]).to have_attributes(path: '/path2', ip: '2.2.2.2')
       end
     end
   end

@@ -1,3 +1,5 @@
+require_relative 'log'
+
 class Logs
   include Enumerable
   attr_reader :deserializer
