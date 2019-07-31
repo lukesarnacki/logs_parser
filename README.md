@@ -21,7 +21,7 @@ I decided to use rspec testing framework with which I am the most familiar. I
 started from writing failing scenatio which would only test the parser class API
 and edge case scenario in which logs it gets are empty.
 
-Commit: https://github.com/lukesarnacki/logs_parser/commit/de76d68f17122d06c965b69360698a3759e1f074
+Commit: de76d68f17122d06c965b69360698a3759e1f074
 
 ### 2. Correct but naive solution
 
@@ -32,7 +32,7 @@ because it was written rather quickly you can clearly see cutting corners. The
 core logic is mostly structural code and the resulting data structure is just an
 array of arrays; further processing can be error prone in this form.
 
-Commit: https://github.com/lukesarnacki/logs_parser/commit/28337708fdc55bd46a0cce73309ea5a782489cf5
+Commit: 28337708fdc55bd46a0cce73309ea5a782489cf5
 
 ### 3. Refactoring
 
@@ -63,7 +63,7 @@ I took one of the responsibilities from `Parser` and used dedicated object for
 log line instead of `OpenStruct`. Code looks a bit better and should be able to
 handle large files a bit better.
 
-Commit: https://github.com/lukesarnacki/logs_parser/commit/d2a239cc0abb26e677ff75f4ccce6c8c0457ecb3
+Commit: d2a239cc0abb26e677ff75f4ccce6c8c0457ecb3
 
 #### Pageviews calculation
 
@@ -74,7 +74,7 @@ webpage; it holds pageviews and visited ips list. It also holds a logic for
 incrementing both unique and not unique views so the `Parser` class gets less
 responsibilities.
 
-Commit: https://github.com/lukesarnacki/logs_parser/commit/9ad13ec7f1f8c56f1e0a023c6f2c1da1bc4e1e3c
+Commit: 9ad13ec7f1f8c56f1e0a023c6f2c1da1bc4e1e3c
 
 #### Showing the results
 
@@ -86,7 +86,7 @@ As I was running out of time I also did one more thing in this step. I extracted
 what was `Parser` class to `LogsAnalyzer` as its previous name didn't reflect on
 its responsibilities.
 
-Commit: https://github.com/lukesarnacki/logs_parser/commit/1f9acaaaa0d82fa6e8a69ee48830725e36231280
+Commit: 1f9acaaaa0d82fa6e8a69ee48830725e36231280
 
 ### Final thoughts
 
